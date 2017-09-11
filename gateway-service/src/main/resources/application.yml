@@ -15,4 +15,11 @@ zuul:
     ServiceTwo:
       path: /api-b/**
       serviceId: service-two
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
 
