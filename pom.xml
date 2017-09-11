@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>RegisterService</module>
-        <module>ServiceOne</module>
-        <module>GatewayService</module>
-        <module>ServiceTwo</module>
+        <module>register-service</module>
+        <module>service-one</module>
+        <module>gateway-service</module>
+        <module>service-two</module>
     </modules>
 
     <!--以下dependency来自官方-->
