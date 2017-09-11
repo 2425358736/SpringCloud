@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GatewayService/GatewayService.iml" filepath="$PROJECT_DIR$/GatewayService/GatewayService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RegisterService/RegisterService.iml" filepath="$PROJECT_DIR$/RegisterService/RegisterService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ServiceOne/ServiceOne.iml" filepath="$PROJECT_DIR$/ServiceOne/ServiceOne.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpringCloud.iml" filepath="$PROJECT_DIR$/SpringCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/GatewayService.iml" filepath="$PROJECT_DIR$/gateway-service/GatewayService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/register-service/RegisterService.iml" filepath="$PROJECT_DIR$/register-service/RegisterService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-one/ServiceOne.iml" filepath="$PROJECT_DIR$/service-one/ServiceOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-two/ServiceTwo.iml" filepath="$PROJECT_DIR$/service-two/ServiceTwo.iml" />
     </modules>
   </component>
 </project>
