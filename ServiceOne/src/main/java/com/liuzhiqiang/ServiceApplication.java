@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +20,7 @@ import java.util.Map;
 @SpringBootApplication(scanBasePackages = "com.liuzhiqiang")
 @EnableEurekaClient
 @EnableWebMvc
+@EnableFeignClients
 @Controller
 public class ServiceApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
     public static void main(String[] args) {

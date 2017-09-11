@@ -59,3 +59,10 @@ eureka:
     instance-id: http://localhost:8081
 server:
   port: 8081
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000

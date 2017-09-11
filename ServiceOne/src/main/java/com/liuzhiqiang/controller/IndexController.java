@@ -2,6 +2,7 @@ package com.liuzhiqiang.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.liuzhiqiang.FeignClientservice.IndexService;
 import com.liuzhiqiang.config.aop.Monitor;
 import com.liuzhiqiang.config.redis.IRedisService;
 import com.liuzhiqiang.dao.UserMapper;
@@ -25,6 +26,8 @@ public class IndexController {
     private UserMapper userMapper;
     @Autowired
     private IRedisService iRedisService;
+    @Autowired
+    private IndexService indexService;
 
 
     @RequestMapping(value = "/index/{id}")
@@ -69,6 +72,12 @@ public class IndexController {
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("PageInfo",pageInfo);
         //map.put("Page",page);
+        return map;
+    }
+    @RequestMapping(value = "/FeignClent",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,Object> FeignClent(){
+        Map<String,Object> map = indexService.index();
         return map;
     }
 
