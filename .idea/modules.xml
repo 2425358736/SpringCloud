@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SpringCloud.iml" filepath="$PROJECT_DIR$/SpringCloud.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gateway-service/GatewayService.iml" filepath="$PROJECT_DIR$/gateway-service/GatewayService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/register-service/RegisterService.iml" filepath="$PROJECT_DIR$/register-service/RegisterService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/service-one/ServiceOne.iml" filepath="$PROJECT_DIR$/service-one/ServiceOne.iml" />
-      <module fileurl="file://$PROJECT_DIR$/service-two/ServiceTwo.iml" filepath="$PROJECT_DIR$/service-two/ServiceTwo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/register-service/register-service.iml" filepath="$PROJECT_DIR$/register-service/register-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-one/service-one.iml" filepath="$PROJECT_DIR$/service-one/service-one.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-two/service-two.iml" filepath="$PROJECT_DIR$/service-two/service-two.iml" />
     </modules>
   </component>
 </project>
