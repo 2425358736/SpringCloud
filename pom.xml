@@ -13,6 +13,7 @@
         <module>RegisterService</module>
         <module>ServiceOne</module>
         <module>GatewayService</module>
+        <module>ServiceTwo</module>
     </modules>
 
     <!--以下dependency来自官方-->
