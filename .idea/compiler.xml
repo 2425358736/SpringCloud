@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="GatewayService" />
+        <module name="RegisterService" />
+        <module name="ServiceOne" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.7">
+      <module name="GatewayService" target="1.6" />
+      <module name="RegisterService" target="1.6" />
+      <module name="ServiceOne" target="1.6" />
+      <module name="SpringCloud" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
