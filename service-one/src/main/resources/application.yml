@@ -59,10 +59,8 @@ eureka:
     instance-id: http://localhost:8081
 server:
   port: 8081
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 20000
+
+logging:
+    file: templates/test.log  # 日志文件,绝对路径或相对路径
+    path: templates  # 保存日志文件目录路径
+    config: log/logback.xml # 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml
