@@ -1,5 +1,6 @@
 package com.liuzhiqiang.controller;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.liuzhiqiang.FeignClientservice.IndexService;
@@ -68,7 +69,7 @@ public class IndexController {
         PageHelper.startPage(pageNum, pageSize);
         List<User> list = userMapper.gitListUser();
         PageInfo pageInfo = new PageInfo(list);
-        //Page page = (Page) list;
+        Page page = (Page) list;
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("PageInfo",pageInfo);
         //map.put("Page",page);
