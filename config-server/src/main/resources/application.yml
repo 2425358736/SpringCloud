@@ -6,18 +6,18 @@ spring:
       server:
         git:
           uri: https://github.com/2425358736/file
-          searchPaths: respo
+          searchPaths: service-one
           username: 2425358736@qq.com
           password: lzq199528
       label: master
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/  #注册中心地址
+      defaultZone: http://192.168.5.12:8080/eureka/  #注册中心地址
   instance:
-    hostname: localhost
-    instance-id: http://localhost:19090
+    hostname: 192.168.5.12
+    instance-id: http://192.168.5.12:8888
 server:
-  port: 19090
+  port: 8888
 
 
