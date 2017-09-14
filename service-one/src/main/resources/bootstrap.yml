@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      name: service-one
+      label: master
+      uri: http://192.168.5.12:18888

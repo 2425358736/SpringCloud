@@ -16,8 +16,8 @@ eureka:
       defaultZone: http://192.168.5.12:8080/eureka/  #注册中心地址
   instance:
     hostname: 192.168.5.12
-    instance-id: http://192.168.5.12:8888
+    instance-id: http://192.168.5.12:18888
 server:
-  port: 8888
+  port: 18888
 
 
