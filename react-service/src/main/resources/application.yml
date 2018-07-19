@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: react-service
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  #freemarker配置
+  freemarker:
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+  #aop开启
+  aop:
+    auto: true
+#druid数据源相关配置配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/order_food?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: org.apache.tomcat.jdbc.pool.DataSource
+
+    #连接池的配置信息
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  #出现错误时, 直接抛出异常
+  mvc:
+    throw-exception-if-no-handler-found: true
+  #不要为我们工程中的资源文件建立映射
+  resources:
+    add-mappings: false
+  #redis配置数据
+  redis:
+    hostName: 127.0.0.1
+    port: 6379
+    database: 2 #数据库名
+    password:
+    pool:
+      maxActive: 8
+      maxWait: -1
+      maxIdle: 100
+      minIdle: 0
+    timeout: 5000
+
+#mybatis 配置信息
+mybatis:
+  type-aliases-package: com.liuzhiqiang.saas.react.domain
+  mapperLocations: classpath:/mappers/**/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+server:
+  port: 8000
+  session:
+    timeout: 36000
+
+logging:
+    config: log/logback.xml # 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml
