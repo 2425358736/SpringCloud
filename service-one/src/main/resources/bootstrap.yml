@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      name: service-one
+      label: master
+      uri: http://localhost:18888

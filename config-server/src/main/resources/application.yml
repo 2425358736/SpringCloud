@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/2425358736/file
+          searchPaths: service-one
+          username: 2425358736@qq.com
+          password: you password
+      label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/  #注册中心地址
+  instance:
+    hostname: localhost
+    instance-id: http://localhost:18888
+server:
+  port: 18888
+
+
