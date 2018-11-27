@@ -6,8 +6,6 @@ import com.github.pagehelper.PageInfo;
 import com.liuzhiqiang.FeignClientservice.IndexService;
 import com.liuzhiqiang.config.aop.Monitor;
 import com.liuzhiqiang.config.redis.IRedisService;
-import com.liuzhiqiang.dao.UserMapper;
-import com.liuzhiqiang.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +21,6 @@ import java.util.Map;
  */
 @RestController
 public class IndexController {
-    @Autowired
-    private UserMapper userMapper;
     @Autowired
     private IRedisService iRedisService;
     @Autowired
@@ -48,9 +44,7 @@ public class IndexController {
     //mybaits测试
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView getindex(Integer id, ModelMap modelMap) {
-        User user = userMapper.selectByPrimaryKey(new Long("1"));
         modelMap.put("name","liuzhiqiang");
-        modelMap.put("user",user);
         return new ModelAndView("index",modelMap);
     }
     //aop redis测试
@@ -67,12 +61,7 @@ public class IndexController {
         pageNum = pageNum == null ? 1 : pageNum;
         pageSize = pageSize == null ? 10 : pageSize;
         PageHelper.startPage(pageNum, pageSize);
-        List<User> list = userMapper.gitListUser();
-        PageInfo pageInfo = new PageInfo(list);
-        Page page = (Page) list;
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("PageInfo",pageInfo);
-        //map.put("Page",page);
         return map;
     }
     @RequestMapping(value = "/FeignClent",method = RequestMethod.GET)

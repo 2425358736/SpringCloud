@@ -8,7 +8,7 @@ spring:
           uri: https://github.com/2425358736/file
           searchPaths: service-one
           username: 2425358736@qq.com
-          password: you password
+          password: lzq199528
       label: master
 eureka:
   client:

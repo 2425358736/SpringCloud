@@ -36,6 +36,21 @@
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <spring.loaded.version>1.2.7.RELEASE</spring.loaded.version>
+
+        <!-- mysql 数据库-->
+        <mysql.version>5.1.21</mysql.version>
+        <druid.version>1.0.27</druid.version>
+        <springboot.mybatis.version>1.3.0</springboot.mybatis.version>
+
+        <!-- Build args -->
+        <argline>-server -Xms64m -Xmx256m -XX:PermSize=64m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true</argline>
+
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -58,5 +73,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!--lombok-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 </project>

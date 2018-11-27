@@ -29,7 +29,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         // 多个拦截器组成一个拦截器链
         // addPathPatterns 用于添加拦截规则
         // excludePathPatterns 用户排除拦截
-        registry.addInterceptor(loginIntercept()).addPathPatterns("/**").excludePathPatterns("/error");
+        registry.addInterceptor(loginIntercept()).addPathPatterns("/**")
+                .excludePathPatterns("/system/verificationUser")
+                .excludePathPatterns("/error");
         super.addInterceptors(registry);
     }
 
