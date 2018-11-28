@@ -91,6 +91,14 @@ public class SysPermissionVo extends SysPermission {
         this.perUrl = perUrl;
     }
 
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
     @Override
     public Long getId() {
         return id;

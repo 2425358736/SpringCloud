@@ -38,6 +38,13 @@ public class SysPermissionController extends BaseController {
         return CommonResult.successReturn(list);
     }
 
+    @PostMapping("/perListAll")
+    public CommonResult<List> perListAll() {
+        List<SysPermissionVo> list = sysPermissionService.perList("1,2,3");
+        return CommonResult.successReturn(list);
+    }
+
+
     /**
      * 添加权限
      */

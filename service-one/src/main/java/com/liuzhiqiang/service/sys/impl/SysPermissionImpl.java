@@ -98,7 +98,7 @@ public class SysPermissionImpl implements SysPermissionService {
     @Transactional(readOnly = false, rollbackFor = Exception.class)
     public int updatePer(SysPermission sysPermission) {
         int i = 0;
-        if (sysPermission.getDelFlag() == 1) {
+        if (sysPermission.getDelFlag() != null && sysPermission.getDelFlag() == 1) {
             List<SysPermission> list = sysPermissionMapper.getSysPermissionSun(sysPermission.getId());
             if (list.size() > 0) {
                 i = 302;

@@ -20,9 +20,9 @@ import java.util.Map;
  * Created by JJJ on 2017/9/11.
  */
 @SpringBootApplication(scanBasePackages = "com.liuzhiqiang")
-@EnableEurekaClient
+@EnableEurekaClient // //启动EnableEureka客户端
 @EnableWebMvc
-@EnableFeignClients
+@EnableFeignClients // 通过EnableFeignClients调用其他服务的api
 @Controller
 public class ServiceApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
