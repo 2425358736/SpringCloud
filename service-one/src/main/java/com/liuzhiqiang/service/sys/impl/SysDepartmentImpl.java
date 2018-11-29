@@ -4,6 +4,7 @@ import com.liuzhiqiang.config.page.PageHelper;
 import com.liuzhiqiang.domain.sys.SysDepartment;
 import com.liuzhiqiang.domain.sys.SysUser;
 import com.liuzhiqiang.domain.sys.vo.SysDepartmentVo;
+import com.liuzhiqiang.domain.sys.vo.SysPermissionVo;
 import com.liuzhiqiang.domain.sys.vo.SysRoleVo;
 import com.liuzhiqiang.domain.sys.vo.SysUserVo;
 import com.liuzhiqiang.mapper.sys.SysDepartmentMapper;
@@ -11,12 +12,14 @@ import com.liuzhiqiang.mapper.sys.SysRoleMapper;
 import com.liuzhiqiang.mapper.sys.SysUserMapper;
 import com.liuzhiqiang.service.sys.SysDepartmentService;
 import com.liuzhiqiang.until.BrushUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -91,7 +94,7 @@ public class SysDepartmentImpl implements SysDepartmentService {
     @Override
     public int deleteDepartment(SysDepartment sysDepartment) {
         List<SysRoleVo> list = sysRoleMapper.listRoleDepartment(sysDepartment.getId());
-        int i = 0;
+        int i;
         if (list.size() > 0) {
             i = 320;
         } else {
@@ -102,7 +105,26 @@ public class SysDepartmentImpl implements SysDepartmentService {
 
     @Override
     public List<SysDepartmentVo> departmentListAll() {
-        return sysDepartmentMapper.departmentListAll();
+        List<SysDepartmentVo> listAll = sysDepartmentMapper.departmentListAll();
+        return listAll;
+    }
+
+    @Override
+    public List<SysDepartmentVo> departmentListAllTree() {
+        List<SysDepartmentVo> listAll = sysDepartmentMapper.departmentListAll();
+        List<SysDepartmentVo> list = recursion(listAll, new Long(0));
+        return list;
+    }
+
+    public List recursion(List<SysDepartmentVo> listAll, Long parentId) {
+        List<SysDepartmentVo> list = new LinkedList<>();
+        listAll.forEach(sysDepartmentVo -> {
+            if (StringUtils.equals(String.valueOf(sysDepartmentVo.getParentId()), String.valueOf(parentId))) {
+                list.add(sysDepartmentVo);
+                sysDepartmentVo.setChildren(recursion(listAll, sysDepartmentVo.getId()));
+            }
+        });
+        return list;
     }
 
     /**

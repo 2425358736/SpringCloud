@@ -70,8 +70,7 @@ public class SysPermissionImpl implements SysPermissionService {
     @Override
     public List<SysPermissionVo> perList(String str) {
         List<SysPermissionVo> listAll =  sysPermissionMapper.perList(str);
-        List<SysPermissionVo> list = new LinkedList<>();
-        list = recursion(listAll, new Long(0));
+        List<SysPermissionVo> list = recursion(listAll, new Long(0));
         return list;
     }
 

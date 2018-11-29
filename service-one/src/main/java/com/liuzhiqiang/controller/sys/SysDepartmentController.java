@@ -47,7 +47,7 @@ public class SysDepartmentController extends BaseController {
     public CommonResult<String> deleteDepartment(@RequestBody SysDepartment sysDepartment, HttpSession session) {
         int i = sysDepartmentService.deleteDepartment(sysDepartment);
         if (i > 0) {
-            if (i == 302) {
+            if (i == 320) {
                 return CommonResult.successReturn("该部门下存在未删除的部门或角色信息，为保系统正常使用，请先删除下级部门或角色。", "该部门下存在未删除的部门或角色信息，为保系统正常使用，请先删除下级部门或角色。");
             } else {
                 return CommonResult.successReturn("删除成功", "删除成功");
@@ -118,6 +118,17 @@ public class SysDepartmentController extends BaseController {
     @PostMapping("/departmentListAll")
     public CommonResult<List> departmentListAll() {
         List<SysDepartmentVo> list = sysDepartmentService.departmentListAll();
+        return CommonResult.successReturn(list);
+    }
+
+
+    /**
+     * 部门树结构
+     * @return
+     */
+    @PostMapping("/departmentListAllTree")
+    public CommonResult<List> departmentListAllTree() {
+        List<SysDepartmentVo> list = sysDepartmentService.departmentListAllTree();
         return CommonResult.successReturn(list);
     }
 }

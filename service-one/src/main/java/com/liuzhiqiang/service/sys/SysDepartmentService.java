@@ -61,4 +61,6 @@ public interface SysDepartmentService {
     int deleteDepartment(SysDepartment sysDepartment);
 
     List<SysDepartmentVo> departmentListAll();
+
+    List<SysDepartmentVo> departmentListAllTree();
 }
