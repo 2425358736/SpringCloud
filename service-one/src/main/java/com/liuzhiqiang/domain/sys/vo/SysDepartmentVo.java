@@ -15,6 +15,4 @@ public class SysDepartmentVo extends SysDepartment {
     private List<SysPermissionVo> children = new ArrayList<>();
 
     private String parentName;
-
-
 }

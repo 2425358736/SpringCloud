@@ -41,6 +41,7 @@ public class LoginIntercept implements HandlerInterceptor {
             kg = true;
         } else {
             String sessionId = redisServer.get(sysUser.getId().toString());
+            logger.info("sessionId=" + sessionId);
             if (!StringUtils.equals(sessionId,session.getId())) {
                 kg = true;
             }
