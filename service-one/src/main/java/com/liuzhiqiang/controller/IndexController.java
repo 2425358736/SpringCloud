@@ -1,8 +1,6 @@
 package com.liuzhiqiang.controller;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.liuzhiqiang.FeignClientservice.IndexService;
 import com.liuzhiqiang.config.aop.Monitor;
 import com.liuzhiqiang.config.redis.IRedisService;
@@ -13,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
