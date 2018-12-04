@@ -24,9 +24,9 @@ public class SysUserVo extends SysUser implements UserDetails{
     //角色id
     private Long roleId;
 
-    private List<SysPermission> authorities;
+    private List<SysPermissionVo> authorities;
 
-    public void setAuthorities(List<SysPermission> authorities) {
+    public void setAuthorities(List<SysPermissionVo> authorities) {
         this.authorities = authorities;
     }
 
@@ -42,7 +42,7 @@ public class SysUserVo extends SysUser implements UserDetails{
 
     @Override
     public String getUsername() {
-        return getPhone();
+        return getLoginName();
     }
 
     @Override

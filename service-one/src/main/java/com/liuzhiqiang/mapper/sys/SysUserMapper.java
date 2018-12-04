@@ -79,4 +79,6 @@ public interface SysUserMapper {
     SysUser verificationPhone(SysUserVo sysUser);
 
     List<SysUserVo> listSysUserPer(@Param("per") String per);
+
+    SysUserVo getUserInfoLoginName(@Param("loginName") String loginName);
 }

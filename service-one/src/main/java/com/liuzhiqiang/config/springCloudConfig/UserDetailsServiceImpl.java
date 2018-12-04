@@ -1,9 +1,11 @@
 package com.liuzhiqiang.config.springCloudConfig;
 
-import com.liuzhiqiang.domain.sys.SysDepartment;
 import com.liuzhiqiang.domain.sys.SysPermission;
+import com.liuzhiqiang.domain.sys.vo.SysPermissionVo;
 import com.liuzhiqiang.domain.sys.vo.SysUserVo;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.liuzhiqiang.mapper.sys.SysPermissionMapper;
+import com.liuzhiqiang.service.sys.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -16,19 +18,15 @@ import java.util.List;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+    @Autowired
+    public SysUserService sysUserService;
+    @Autowired
+    public SysPermissionMapper sysPermissionMapper;
     @Override
-    public SysUserVo loadUserByUsername(String s) throws UsernameNotFoundException {
-        SysUserVo sysUserVo = new SysUserVo();
-        sysUserVo.setId(new Long("1"));
-        sysUserVo.setPhone("1111");
-        sysUserVo.setPassWord("2222");
-        SysPermission sysPermission = new SysPermission();
-        sysPermission.setPermissionCode("2222");
-        List list = new ArrayList();
-        list.add(sysPermission);
+    public SysUserVo loadUserByUsername(String loginName) throws UsernameNotFoundException {
+        SysUserVo sysUserVo = sysUserService.getUserInfoLoginName(loginName);
+        List<SysPermissionVo> list = sysPermissionMapper.listPermission(sysUserVo.getId());
         sysUserVo.setAuthorities(list);
-        System.out.println(sysUserVo.getUsername());
-        System.out.println(sysUserVo.getPassword());
         return sysUserVo;
     }
 }

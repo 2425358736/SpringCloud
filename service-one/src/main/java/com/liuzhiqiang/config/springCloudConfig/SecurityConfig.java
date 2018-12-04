@@ -44,40 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable();
-        httpSecurity.authorizeRequests().
-                antMatchers("/static/**").permitAll().anyRequest().authenticated().
-                and().formLogin().loginPage("/login2").permitAll().successHandler(loginSuccessHandler()).
-                and().logout().permitAll().invalidateHttpSession(true).
-                deleteCookies("JSESSIONID").logoutSuccessHandler(logoutSuccessHandler()).
-                and().sessionManagement().maximumSessions(10).expiredUrl("/login");
+        httpSecurity
+                .authorizeRequests()
+                .antMatchers("/static/**").permitAll()
+                .and().exceptionHandling().accessDeniedPage("/401");
     }
-
-    @Bean
-    public SavedRequestAwareAuthenticationSuccessHandler loginSuccessHandler() { //登入处理
-        return new SavedRequestAwareAuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                SysUserVo userDetails = (SysUserVo) authentication.getPrincipal();
-                logger.info("USER : " + userDetails.getUsername() + " LOGIN SUCCESS !  ");
-                super.onAuthenticationSuccess(request, response, authentication);
-            }
-        };
-    }
-
-    @Bean
-    public LogoutSuccessHandler logoutSuccessHandler() { //登出处理
-        return new LogoutSuccessHandler() {
-            @Override
-            public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-                try {
-                    SysUserVo user = (SysUserVo) authentication.getPrincipal();
-                    logger.info("USER : " + user.getUsername() + " LOGOUT SUCCESS !  ");
-                } catch (Exception e) {
-                    logger.info("LOGOUT EXCEPTION , e : " + e.getMessage());
-                }
-                httpServletResponse.sendRedirect("/login");
-            }
-        };
-    }
-
 }

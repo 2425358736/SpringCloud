@@ -347,4 +347,7 @@
     where d.permission_code = #{per}
     GROUP BY a.id
   </select>
+  <select id="getUserInfoLoginName" resultType="com.liuzhiqiang.domain.sys.vo.SysUserVo">
+    SELECT a.* FROM sys_user a where a.login_name = #{loginName}
+  </select>
 </mapper>

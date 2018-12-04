@@ -5,15 +5,13 @@ import com.liuzhiqiang.FeignClientservice.IndexService;
 import com.liuzhiqiang.config.aop.Monitor;
 import com.liuzhiqiang.config.redis.IRedisService;
 import com.liuzhiqiang.domain.sys.SysUser;
-import com.liuzhiqiang.domain.sys.vo.SysUserVo;
-import org.bouncycastle.voms.VOMSAttribute;
+import com.liuzhiqiang.mapper.sys.SysUserMapper;
+import com.liuzhiqiang.until.CommonResult;
+import com.liuzhiqiang.until.Md5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,7 +31,7 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
     @Autowired
-    public UserDetailsService userDetailsService;
+    public SysUserMapper sysUserMapper;
 
 
     @RequestMapping(value = "/index/{id}")
@@ -88,11 +86,18 @@ public class IndexController {
 
 
     @RequestMapping("login2")
-    public String login2(HttpServletRequest request) {
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("1111", "2222");
-        SecurityContextHolder.getContext().setAuthentication(authRequest);
-        HttpSession session = request.getSession();
-        session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // 这个非常重要，否则验证后将无法登陆
-        return authRequest.getName();
+    @CrossOrigin
+    public CommonResult<String> login2(@RequestBody SysUser sysUser, HttpSession session) {
+        sysUser.setPassWord(Md5Utils.md5(sysUser.getPassWord()));
+        SysUser user = sysUserMapper.verificationUser(sysUser);
+        if (user != null) {
+            UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(sysUser.getLoginName(),sysUser.getPassWord());
+            SecurityContextHolder.getContext().setAuthentication(authRequest);
+            session.setAttribute("user", user);
+            iRedisService.set(user.getId().toString(), session.getId());
+            return CommonResult.successReturn("登录成功", "登陆成功");
+        } else {
+            return CommonResult.errorReturn(150,"账号密码不匹配");
+        }
     }
 }

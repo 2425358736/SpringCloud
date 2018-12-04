@@ -16,6 +16,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -43,6 +44,7 @@ public class SysUserController extends BaseController {
      * @param brushUtils
      * @return 用户列表
      */
+    @PreAuthorize("hasAnyAuthority('sys:sysuser')")
     @PostMapping("/sysUserList")
     public CommonResult<PageInfo> sysUserList(@RequestBody BrushUtils brushUtils) {
         List<SysUserVo> list = sysUserService.listSysUser(brushUtils);
@@ -175,7 +177,6 @@ public class SysUserController extends BaseController {
     }
 
     @PostMapping("/getUserName")
-    @RequiresPermissions("sys:all")
     public CommonResult<SysUser> getUserName(HttpSession session){
         SysUser sysUser = (SysUser) session.getAttribute("user");
         return CommonResult.successReturn(sysUser);

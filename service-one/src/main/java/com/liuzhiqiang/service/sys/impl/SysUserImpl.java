@@ -120,4 +120,9 @@ public class SysUserImpl implements SysUserService {
         }
     }
 
+    @Override
+    public SysUserVo getUserInfoLoginName(String loginName) {
+        return sysUserMapper.getUserInfoLoginName(loginName);
+    }
+
 }

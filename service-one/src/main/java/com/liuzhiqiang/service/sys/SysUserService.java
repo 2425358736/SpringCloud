@@ -60,4 +60,6 @@ public interface SysUserService {
     int insertUser(SysUserVo sysUserVo, HttpSession session);
 
     int updateUser(SysUserVo sysUser, HttpSession session);
+
+    SysUserVo getUserInfoLoginName(String loginName);
 }
