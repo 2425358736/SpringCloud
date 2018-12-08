@@ -72,7 +72,7 @@ public class SysRoleImpl implements SysRoleService {
 
     @Override
     public List<SysRoleVo> listRole(BrushUtils brushUtils) {
-        if(brushUtils != null) {
+        if(brushUtils.getPagination().getField() != null) {
             PageHelper.startPage(brushUtils.getPagination());
         }
         return sysRoleMapper.listRole(brushUtils);
