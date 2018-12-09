@@ -227,13 +227,6 @@
         </dependency>
         <!--end-->
 
-        <!--hutool 开源工具集 lyz-->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>4.0.9</version>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
