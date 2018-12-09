@@ -34,6 +34,7 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,log4j
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
   #redis配置数据
   redis:
     hostName: 123.206.19.217
