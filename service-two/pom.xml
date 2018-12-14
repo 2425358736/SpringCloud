@@ -86,7 +86,7 @@
                 <version>1.1.1</version>
                 <configuration>
 
-                    <imageName>springCloud/service-two</imageName>
+                    <imageName>springcloud/service-two</imageName>
                     <forceTags>true</forceTags>
                     <imageTags>
                         <!--docker的tag为项目版本号、latest-->

@@ -32,7 +32,7 @@
                 <version>1.1.1</version>
                 <configuration>
 
-                    <imageName>springCloud/gateway-service</imageName>
+                    <imageName>springcloud/gateway-service</imageName>
                     <forceTags>true</forceTags>
                     <imageTags>
                         <!--docker的tag为项目版本号、latest-->
