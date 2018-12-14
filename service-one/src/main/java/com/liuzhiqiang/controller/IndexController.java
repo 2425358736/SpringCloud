@@ -8,16 +8,19 @@ import com.liuzhiqiang.domain.sys.SysUser;
 import com.liuzhiqiang.mapper.sys.SysUserMapper;
 import com.liuzhiqiang.until.CommonResult;
 import com.liuzhiqiang.until.Md5Utils;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +35,8 @@ public class IndexController {
     private IndexService indexService;
     @Autowired
     public SysUserMapper sysUserMapper;
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
 
     @RequestMapping(value = "/index/{id}")
@@ -71,14 +76,34 @@ public class IndexController {
         Map<String,Object> map = new HashMap<String,Object>();
         return map;
     }
-    @RequestMapping(value = "/FeignClent",method = RequestMethod.GET)
+
+    // security测试
+    @RequestMapping(value = "/FeignClent2",method = RequestMethod.GET)
     @PreAuthorize("hasAnyAuthority('2222')")
+    @ResponseBody
+    public Map<String,Object> FeignClent2(){
+        Map<String,Object> map = indexService.index();
+        return map;
+    }
+
+
+    // Feign测试
+    @RequestMapping(value = "/FeignClent",method = RequestMethod.GET)
+//    @PreAuthorize("hasAnyAuthority('2222')")
     @ResponseBody
     public Map<String,Object> FeignClent(){
         Map<String,Object> map = indexService.index();
         return map;
     }
 
+
+    // mq测试
+    @RequestMapping(value = "/FeignClent1",method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,Object> FeignClent1(){
+        rabbitTemplate.convertAndSend("3", new Date());
+        return new HashMap<>();
+    }
     @RequestMapping("login")
     public ModelAndView login(ModelMap modelMap) {
         return new ModelAndView("login",modelMap);

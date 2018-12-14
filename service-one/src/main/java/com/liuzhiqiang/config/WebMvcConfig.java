@@ -31,7 +31,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         // excludePathPatterns 用户排除拦截
         registry.addInterceptor(loginIntercept()).addPathPatterns("/**")
                 .excludePathPatterns("/system/verificationUser")
-                .excludePathPatterns("/FeignClent")
+                .excludePathPatterns("/FeignClent1")
+                .excludePathPatterns("/FeignClent2")
+                .excludePathPatterns("/FeignClent3")
                 .excludePathPatterns("/login2")
                 .excludePathPatterns("/index")
                 .excludePathPatterns("/error");

@@ -11,7 +11,7 @@
        <input type="text" name="password">
        <button type="submit">确认</button>
    </form>
-    <a href="/FeignClent">dddd</a>
+    <a href="/FeignClent2">dddd</a>
 </div>
 </body>
 </html>
