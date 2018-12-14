@@ -3,4 +3,4 @@
 #    config:
 #      name: service-two
 #      label: master
-#      uri: http://localhost:18888
+#      uri: http://123.206.19.217:18888

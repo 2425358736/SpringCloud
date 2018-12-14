@@ -62,10 +62,10 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/  #注册中心地址
+      defaultZone: http://123.206.19.217:8080/eureka/  #注册中心地址
   instance:
-    hostname: localhost
-    instance-id: http://localhost:8081
+    hostname: 123.206.19.217
+    instance-id: http://123.206.19.217:8081
 server:
   port: 8081
   session:
