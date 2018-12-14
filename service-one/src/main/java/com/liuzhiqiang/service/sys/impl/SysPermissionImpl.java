@@ -74,7 +74,7 @@ public class SysPermissionImpl implements SysPermissionService {
         return list;
     }
 
-    public List recursion(List<SysPermissionVo> listAll, Long parentId) {
+    public static List recursion(List<SysPermissionVo> listAll, Long parentId) {
         List<SysPermissionVo> list = new LinkedList<>();
         listAll.forEach(sysPermissionVo -> {
             if (StringUtils.equals(String.valueOf(sysPermissionVo.getParentId()), String.valueOf(parentId))) {

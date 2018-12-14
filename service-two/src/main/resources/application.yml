@@ -1,6 +1,39 @@
 spring:
   application:
     name: service-two
+  rabbitmq:
+    host: 123.206.19.217
+    port: 5672
+    username: guest
+    password: guest
+#druid数据源相关配置配置
+  datasource:
+    url: jdbc:mysql://123.206.19.217:3306/springcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
+    username: root
+    password: lzq199528
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #连接池的配置信息
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#mybatis 配置信息
+mybatis:
+  type-aliases-package: com.liuzhiqiang.domain
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapperLocations: classpath:/mappers/**/*.xml
 # 向注册中心注册
 eureka:
   client:
@@ -8,8 +41,11 @@ eureka:
       defaultZone: http://localhost:8080/eureka/  #注册中心地址
   instance:
     hostname: localhost
-    instance-id: http://localhost:8081
+    instance-id: http://localhost:8089
 server:
   port: 8089
   session:
       timeout: 36000
+#tm:
+#  manager:
+#    url: http://127.0.0.1:8899/tx/manager/

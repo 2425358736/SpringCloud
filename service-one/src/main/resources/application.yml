@@ -13,8 +13,8 @@ spring:
     template-loader-path: classpath:/templates
 #druid数据源相关配置配置
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/springcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
-    username: liuzhiqiang
+    url: jdbc:mysql://123.206.19.217:3306/springcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
+    username: root
     password: lzq199528
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
@@ -34,6 +34,7 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,log4j
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
   #redis配置数据
   redis:
     hostName: 123.206.19.217
@@ -46,6 +47,11 @@ spring:
       maxIdle: 100
       minIdle: 0
     timeout: 5000
+  rabbitmq:
+    host: 123.206.19.217
+    port: 5672
+    username: guest
+    password: guest
 #mybatis 配置信息
 mybatis:
   type-aliases-package: com.liuzhiqiang.domain
@@ -69,6 +75,7 @@ server:
 feign:
   hystrix:
     enabled: true
+
 
 logging:
     config: log/logback.xml # 日志配置文件,Spring Boot默认使用classpath路径下的日志配置文件,如:logback.xml

@@ -4,6 +4,7 @@ import com.liuzhiqiang.domain.sys.SysPermission;
 import com.liuzhiqiang.domain.sys.SysUser;
 import com.liuzhiqiang.domain.sys.vo.SysPermissionVo;
 import com.liuzhiqiang.service.sys.SysPermissionService;
+import com.liuzhiqiang.service.sys.impl.SysPermissionImpl;
 import com.liuzhiqiang.until.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -87,7 +88,8 @@ public class SysPermissionController extends BaseController {
     @PostMapping("/listPermission")
     public CommonResult<List> listPermission(HttpSession session) {
         SysUser sysUser = (SysUser)session.getAttribute("user");
-        List<SysPermissionVo> list = sysPermissionService.listPermission(sysUser.getId());
+        List<SysPermissionVo> listAll = sysPermissionService.listPermission(sysUser.getId());
+        List<SysPermissionVo> list = SysPermissionImpl.recursion(listAll, new Long(0));
         return CommonResult.successReturn(list);
     }
 
