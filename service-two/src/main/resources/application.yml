@@ -2,13 +2,13 @@ spring:
   application:
     name: service-two
   rabbitmq:
-    host: localhost
+    host: 123.206.19.217
     port: 5672
     username: guest
     password: guest
 #druid数据源相关配置配置
   datasource:
-    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
+    url: jdbc:mysql://123.206.19.217:3306/springcloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false
     username: root
     password: lzq199528
     driver-class-name: com.mysql.jdbc.Driver
